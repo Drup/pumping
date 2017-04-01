@@ -64,13 +64,13 @@ let x : [%re"[ab]&[bc]"] = `b `End
 
 ## Equivalence of regular expressions
 
-Since the type defined by pumping are structural, it is possible to use the typechecker
-to test for the equivalence of regular expressions:
+Since types defined by pumping are structural, it is possible to use the typechecker
+to test the equivalence of regular expressions:
 ```ocaml
 let f : [%re"aa*a"] -> [%re"a{2,}"] = fun x -> x
 ```
 
-We can also leverage subtyping to test for the inclusion of regular expressions:
+We can also leverage subtyping to test the inclusion of regular expressions:
 ```ocaml
 let f x = (x : [%re"a*"] :> [%re"[ab]*"])
 ```
