@@ -79,7 +79,7 @@ let f x = (x : [%re"a*"] :> [%re"[ab]*"])
 
 The implementation is a fairly simple adaption of [Brzozowski derivative][deriv]. In
 particular, it follows the technique described in the article "[Regular-expression derivatives reexamined][deriv2]".
-Recursive types with (polymorphic) variants naturally describes a graph, thanks to
+Recursive types with (polymorphic) variants naturally describe a graph, thanks to
 unification type variables and the `as` construction.
 
 Indeed, `[%re"(OC|oc|c)(a)*ml"]` is simply:
@@ -107,7 +107,7 @@ regular languages is well known, but limited.
   annotation on types, in order to describe mutually dependent regular expressions:
   ```ocaml
   type%re t1 = [%re? Star `Foo, t2]
-  and t2 = [%re? (`Bar | `Baz | t2)]
+  and t2 = [%re? (`Bar | `Baz | t1)]
   ```
 - It is unclear how to handle grouping, backreferences and lookaround constructions.
 - Deterministic Pushdown automatons are fairly easy to encode (using a "counter" type), but
