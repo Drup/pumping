@@ -139,7 +139,7 @@ let rec has_epsilon = function
   | Alt (e1, e2) ->
     has_epsilon e1 || has_epsilon e2
   | Rep (0, _, _) -> true
-  | Rep (_, _, _) -> false
+  | Rep (_, _, e) -> has_epsilon e
   | Inter (e1, e2) -> has_epsilon e1 && has_epsilon e2
   | Chars _ -> false
 
